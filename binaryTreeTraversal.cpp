@@ -48,6 +48,26 @@ vector <int> postorder(Node* root){
     nodes.push_back(root->data);
     return nodes;
 }
+
+int getMax(Node* root){
+    queue<Node *> q;
+    if(root == NULL)
+        return 0;
+    q.push(root);
+    Node *curr;
+    int max = root->data;
+    while(!q.empty()){
+        curr=q.front();
+        q.pop();
+        if(curr->data > max)
+            max = curr->data;
+        if(curr->left != NULL)
+            q.push(curr->left);
+        if(curr->right != NULL)
+            q.push(curr->right);
+    }
+    return max;
+}
 // Utility function to create a new Tree Node
 Node* newNode(int val){
     Node* temp = new Node;
@@ -137,5 +157,8 @@ int main(){
         for(int i: res3)
             cout<<i<< " ";
         cout<<endl;
+
+        int max = getMax(root);
+        cout<<max<<endl;
     return 0;
 }
