@@ -47,6 +47,7 @@ class BinaryTree {
                 cout<<tree[i]<<" ";
             else
                 cout<<"-"<<" ";
+            
         }
     }
 
